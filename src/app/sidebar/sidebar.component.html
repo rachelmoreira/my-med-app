@@ -1,0 +1,61 @@
+<mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    Soluções Médicas Ltda
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <mat-divider></mat-divider>
+  
+        <img class="avatar mat-elevation-z8" src="assets/Images/avatar.png" />
+
+        <h4 class="name">João Silva</h4>
+        <p class="designation">Clínico Geral</p>
+
+        <!--Uso da funcionalidade routerLink para direcionar conforme URL-->
+        <button mat-button class="menu-button" [routerLink]="['/home']">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['/pacientes']">
+            <mat-icon>person</mat-icon>
+            <span>Pacientes</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['/info']">
+            <mat-icon>info</mat-icon>
+            <span>Sobre</span>
+        </button>
+
+        <mat-divider></mat-divider>
+  
+        <button mat-button class="menu-button" [routerLink]="['/help']">
+            <mat-icon>help</mat-icon>
+            <span>Ajuda</span>
+        </button>
+  
+        <button mat-button class="menu-button" [routerLink]="['/login']">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!--Definição do conteúdo exibido conforme URL e Componente-->
+         <div *ngIf="pagina=='pacientes'">
+            <app-pacientes></app-pacientes>
+         </div>
+         <div *ngIf="pagina=='info'">
+            <app-info></app-info>
+         </div>
+         <div *ngIf="pagina=='help'">
+            <app-help></app-help>
+         </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
